@@ -1,0 +1,112 @@
+you have to complete the project, i have already setup and created some important files now you have to complete empty files
+its a url shortner project , use a stunning landing page for react app , in the react app user should be able to - create a shorturl even if not logged in , they should be able to signup ,verify email , login (it's jwt http cookie based auth system), use axios instance, store backend base url in .env, following is complete detail of all the api routes , if user is not logged in they will get 401 :
+{
+"success": false,
+"message": "Please log in to access this resource"
+}, 
+
+whenever someone will enter to react apps short url like http://localhost:3000/abcd
+here i am assuming that http://localhost:3000/abcd is my react app url it should get the 4 charactor short code and get the original url by /get/:short_text and redirect the user to that
+
+note : i have already create the server , you only have to create react app in javascript dont use typescript
+use following base url for api base url -  https://9284-2401-4900-8151-3514-3941-b661-51ba-8c1a.ngrok-free.app
+
+all other routes i have already created in my server -
+/me - get the information of logged in user like -
+{
+"user": {
+"_id": "67bdf19a34d114b19154f47f",
+"name": "sandeep prasad",
+"email": "sanju3@yopmail.com",
+"isVerified": true,
+"createdAt": "2025-02-25T16:36:42.477Z",
+"__v": 0
+},
+"success": true
+}
+post : user/signup : required in body - name , email , password
+post : /user/verify-signup : email and otp
+post : /user/login : email adn password
+post : /user/logout : logs out the user (delete cookies )
+post : /url/create-free-url : route where non logged in user can create free url it accepts originalUrl and customUrlText from body and response is something like -
+{
+"success": true,
+"message": "Successfully created.",
+"data": {
+"originalUrl": "http://www.google.com",
+"shortUrl": "http://localhost:3000/Pry3",
+"_id": "67c41d847dc20e690d9b0cf4",
+"createdAt": "2025-03-02T08:57:40.387Z",
+"updatedAt": "2025-03-02T08:57:40.387Z",
+"__v": 0
+}
+}
+post : /url/create-url : same as above but for logged in user
+delete : /url/delete : user can delete there created url by this , it accepts shortUrl from body , if failled -
+{
+"success": false,
+"message": "Short URL not found."
+}
+get : /user/my_urls?limit=1&page=1 : get the urls created by user , response is something like -
+
+
+{
+"success": true,
+"total": 2,
+"page": "1",
+"limit": "1",
+"totalPage": 2,
+"data": [
+{
+"_id": "67c40f5ea9ccdabb793b2193",
+"originalUrl": "https://sandeepprasad.tech/shh",
+"shortUrl": "http://localhost:3000/Dq9L",
+"userId": "67bdf19a34d114b19154f47f",
+"createdAt": "2025-03-02T07:57:18.414Z",
+"updatedAt": "2025-03-02T07:57:18.414Z",
+"__v": 0
+}
+]
+}
+get : /get-analytics/:short_text : get the analytics of users created short url here short_test is last 4 digit of url like - Pry3
+response -
+{
+"success": true,
+"message": "Analytics retrieved successfully.",
+"data": [
+{
+"_id": "67c420baec682cec500d9be4",
+"urlId": "67c41033ae250810a4629590",
+"referrer": "Direct",
+"userAgent": "PostmanRuntime/7.43.0",
+"ipAddress": "::1",
+"country": "Unknown",
+"createdAt": "2025-03-02T09:11:24.530Z",
+"updatedAt": "2025-03-02T09:11:24.530Z",
+"__v": 0
+},
+{
+"_id": "67c420bfec682cec500d9be7",
+"urlId": "67c41033ae250810a4629590",
+"referrer": "Direct",
+"userAgent": "PostmanRuntime/7.43.0",
+"ipAddress": "::1",
+"country": "Unknown",
+"createdAt": "2025-03-02T09:11:27.326Z",
+"updatedAt": "2025-03-02T09:11:27.326Z",
+"__v": 0
+}
+]
+}
+
+and the main route which retrives the original url from short url -
+get : /get/:short_text
+response -
+{
+"success": true,
+"message": "Successfully fetched the original url.",
+"data": {
+"originalUrl": "https://sandeepprasad.tech/shh",
+"shortUrl": "http://localhost:3000/abcd"
+}
+}
