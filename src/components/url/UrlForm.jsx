@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createUrl, createFreeUrl, clearCreatedUrl, clearError } from '../../store/urlSlice';
@@ -126,13 +127,12 @@ const UrlForm = () => {
           error={formErrors.customUrlText}
         />
         
-        <Button
-          type="submit"
-          variant="primary"
-          className="w-full"
-          isLoading={isLoading}
+        <Button 
+          type="submit" 
+          fullWidth 
+          disabled={isLoading}
         >
-          Shorten URL
+          {isLoading ? 'Shortening...' : 'Shorten URL'}
         </Button>
       </form>
       
@@ -144,40 +144,33 @@ const UrlForm = () => {
       >
         {createdUrl && (
           <div className="space-y-4">
-            <p className="mb-2 text-gray-600">
-              Your original URL has been shortened successfully:
-            </p>
-            
-            <div className="p-3 bg-gray-100 rounded-md">
-              <p className="mb-1 text-sm font-medium text-gray-500">Original URL:</p>
-              <p className="mb-4 break-all">{createdUrl.originalUrl}</p>
-              
-              <p className="mb-1 text-sm font-medium text-gray-500">Shortened URL:</p>
-              <div className="flex items-center justify-between p-2 bg-white rounded">
-                <span className="font-medium text-primary">{createdUrl.shortUrl}</span>
-                <div className="flex space-x-2">
-                  <button
-                    onClick={handleCopyToClipboard}
-                    className="p-1 text-gray-500 transition-colors rounded hover:bg-gray-100"
-                    title="Copy to clipboard"
-                  >
-                    <ClipboardCopy size={16} />
-                  </button>
-                  <a
-                    href={createdUrl.shortUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="p-1 text-gray-500 transition-colors rounded hover:bg-gray-100"
-                    title="Open in new tab"
-                  >
-                    <ExternalLink size={16} />
-                  </a>
-                </div>
-              </div>
+            <div className="bg-gray-100 p-3 rounded-md break-all">
+              <p className="text-gray-700 mb-1 text-sm">Original URL:</p>
+              <p className="text-gray-900">{createdUrl.originalUrl}</p>
             </div>
             
-            <div className="flex justify-end mt-4">
-              <Button onClick={handleCloseModal}>Close</Button>
+            <div className="bg-blue-50 p-3 rounded-md">
+              <p className="text-blue-700 mb-1 text-sm">Shortened URL:</p>
+              <p className="text-blue-900 font-medium break-all">{createdUrl.shortUrl}</p>
+            </div>
+            
+            <div className="flex space-x-3">
+              <Button onClick={handleCopyToClipboard} className="flex items-center gap-2" fullWidth>
+                <ClipboardCopy size={16} />
+                Copy
+              </Button>
+              
+              <a 
+                href={createdUrl.shortUrl} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="flex-1"
+              >
+                <Button variant="secondary" className="flex items-center gap-2" fullWidth>
+                  <ExternalLink size={16} />
+                  Open
+                </Button>
+              </a>
             </div>
           </div>
         )}

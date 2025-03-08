@@ -1,13 +1,12 @@
+
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { GitHub, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
-  const currentYear = new Date().getFullYear();
-
   return (
     <footer className="bg-dark text-white">
-      <div className="container py-12">
+      <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div>
@@ -40,23 +39,21 @@ const Footer = () => {
           <div>
             <h3 className="text-lg font-semibold">Connect With Us</h3>
             <div className="flex mt-4 space-x-4">
-              <a href="#" className="text-gray-300 hover:text-white" aria-label="GitHub">
+              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <GitHub size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white" aria-label="Twitter">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Twitter size={20} />
               </a>
-              <a href="#" className="text-gray-300 hover:text-white" aria-label="LinkedIn">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
                 <Linkedin size={20} />
               </a>
             </div>
           </div>
         </div>
         
-        <div className="pt-8 mt-8 border-t border-gray-700">
-          <p className="text-center text-gray-300">
-            &copy; {currentYear} URLify. All rights reserved.
-          </p>
+        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} URLify. All rights reserved.</p>
         </div>
       </div>
     </footer>
