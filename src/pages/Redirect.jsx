@@ -12,7 +12,7 @@ const Redirect = () => {
     const fetchOriginalUrl = async () => {
       try {
         setIsLoading(true);
-        const response = await api.get(`/get/${shortText}`);
+        const response = await api.get(`/url/get/${shortText}`);
         
         if (response.success) {
           window.location.href = response.data.originalUrl;

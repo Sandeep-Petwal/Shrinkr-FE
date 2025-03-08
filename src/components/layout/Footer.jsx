@@ -1,7 +1,6 @@
 
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { GitHub, Twitter, Linkedin } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -36,20 +35,7 @@ const Footer = () => {
           </div>
           
           {/* Social */}
-          <div>
-            <h3 className="text-lg font-semibold">Connect With Us</h3>
-            <div className="flex mt-4 space-x-4">
-              <a href="https://github.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
-                <GitHub size={20} />
-              </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
-                <Twitter size={20} />
-              </a>
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-300 hover:text-white">
-                <Linkedin size={20} />
-              </a>
-            </div>
-          </div>
+          
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
