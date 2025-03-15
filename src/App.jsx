@@ -32,6 +32,17 @@ const ProtectedRoute = ({ children }) => {
   return children;
 };
 
+// Home Route Component
+const HomeRoute = () => {
+  const { isAuthenticated } = useSelector(state => state.auth);
+  
+  if (isAuthenticated) {
+    return <Dashboard />
+  }
+  
+  return <Home />;
+};
+
 function App() {
   const dispatch = useDispatch();
 
@@ -43,7 +54,7 @@ function App() {
     <Routes>
       {/* Public routes */}
       <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
+        <Route index element={<HomeRoute />} />
         <Route path="login" element={<Login />} />
         <Route path="signup" element={<Signup />} />
         <Route path="verify" element={<Verify />} />

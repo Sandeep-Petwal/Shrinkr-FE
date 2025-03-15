@@ -27,7 +27,7 @@ const Home = () => {
                 </Link>
               </div>
             </div>
-            <div className="lg:w-1/2 bg-white p-6 rounded-lg shadow-lg">
+            <div className="w-full lg:w-1/2 bg-white text-black p-6 rounded-lg shadow-lg">
               <h2 className="text-gray-800 text-2xl font-bold mb-6">Shorten a URL</h2>
               <UrlForm />
             </div>
@@ -38,7 +38,7 @@ const Home = () => {
       {/* Features Section */}
       <section className="py-16 bg-gray-50">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center mb-12">Why Choose URLify?</h2>
+          <h2 className="text-3xl font-bold text-center mb-12">Why Choose MiniURL?</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white p-8 rounded-lg shadow-md text-center">
