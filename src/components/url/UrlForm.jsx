@@ -132,7 +132,7 @@ const UrlForm = () => {
           fullWidth 
           disabled={isLoading}
         >
-          {isLoading ? 'Shortening...' : 'Shorten URL'}
+          {isLoading ? 'Shrinking...' : 'Shrink it'}
         </Button>
       </form>
       
@@ -150,7 +150,7 @@ const UrlForm = () => {
             </div>
             
             <div className="bg-blue-50 p-3 rounded-md">
-              <p className="text-blue-700 mb-1 text-sm">Shortened URL:</p>
+              <p className="text-blue-700 mb-1 text-sm">Shrinken URL:</p>
               <p className="text-blue-900 font-medium break-all">{createdUrl.shortUrl}</p>
             </div>
             

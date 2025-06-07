@@ -61,10 +61,6 @@ const Signup = () => {
       errors.password = 'Password must be at least 6 characters';
     }
     
-    if (formData.password !== formData.confirmPassword) {
-      errors.confirmPassword = 'Passwords do not match';
-    }
-    
     setFormErrors(errors);
     return Object.keys(errors).length === 0;
   };
@@ -90,9 +86,11 @@ const Signup = () => {
   };
   
   return (
-    <div className="min-h-[calc(100vh-300px)] flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Create an Account</h2>
+    <div className="min-h-[calc(100vh-300px)] flex items-center justify-center py-12 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="max-w-md w-full bg-gray-800 rounded-lg shadow-xl p-8 border border-gray-700">
+        <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          Create an Account
+        </h2>
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
@@ -104,6 +102,7 @@ const Signup = () => {
             placeholder="John Doe"
             required
             error={formErrors.name}
+            className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
           />
           
           <Input
@@ -115,6 +114,7 @@ const Signup = () => {
             placeholder="youremail@example.com"
             required
             error={formErrors.email}
+            className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
           />
           
           <Input
@@ -126,30 +126,21 @@ const Signup = () => {
             placeholder="Create a password"
             required
             error={formErrors.password}
-          />
-          
-          <Input
-            label="Confirm Password"
-            name="confirmPassword"
-            type="password"
-            value={formData.confirmPassword}
-            onChange={handleChange}
-            placeholder="Confirm your password"
-            required
-            error={formErrors.confirmPassword}
+            className="bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
           />
           
           <Button 
             type="submit" 
             fullWidth 
             disabled={isLoading}
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-blue-500/20"
           >
             {isLoading ? 'Signing up...' : 'Sign Up'}
           </Button>
         </form>
         
-        <p className="mt-6 text-center text-gray-600">
-          Already have an account? <Link to="/login" className="text-blue-600 hover:underline">Login</Link>
+        <p className="mt-6 text-center text-gray-400">
+          Already have an account? <Link to="/login" className="text-blue-400 hover:text-blue-300 transition-colors duration-200">Login</Link>
         </p>
       </div>
     </div>

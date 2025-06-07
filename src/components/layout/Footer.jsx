@@ -9,7 +9,7 @@ const Footer = () => {
         <div className="grid grid-cols-1 gap-8 md:grid-cols-4">
           {/* Brand */}
           <div>
-            <Link to="/" className="text-2xl font-bold">MiniURL</Link>
+            <Link to="/" className="text-2xl font-bold">Shrinkr</Link>
             <p className="mt-4 text-gray-300">
               Simple, fast, and reliable URL shortening service to make your links more manageable.
             </p>
@@ -39,7 +39,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="text-gray-400">&copy; {new Date().getFullYear()} MiniURL. All rights reserved.</p>
+          <p className="text-gray-400">&copy; {new Date().getFullYear()} Shrinkr. All rights reserved.</p>
         </div>
       </div>
     </footer>

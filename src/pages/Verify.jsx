@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
@@ -53,22 +52,27 @@ const Verify = () => {
   };
   
   return (
-    <div className="min-h-[calc(100vh-300px)] flex items-center justify-center py-12 px-4">
-      <div className="max-w-md w-full bg-white rounded-lg shadow-md p-8">
-        <h2 className="text-3xl font-bold text-center mb-6">Verify Your Email</h2>
+    <div className="min-h-[calc(100vh-300px)] flex items-center justify-center py-12 px-4 bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
+      <div className="max-w-md w-full bg-gray-800 rounded-lg shadow-xl p-8 border border-gray-700">
+        <h2 className="text-3xl font-bold text-center mb-6 bg-gradient-to-r from-blue-400 to-indigo-400 bg-clip-text text-transparent">
+          Verify Your Email
+        </h2>
         
         {verificationEmail && (
-          <p className="text-center mb-6 text-gray-600">
-            We've sent a verification code to <strong>{verificationEmail}</strong>
+          <p className="text-center mb-6 text-gray-300">
+            We've sent a verification code to <strong className="text-blue-400">{verificationEmail}</strong>
           </p>
         )}
         
         <form onSubmit={handleSubmit} className="space-y-4">
           <Input
-            label="Verification Code"
+            className="text-center bg-gray-700 border-gray-600 text-white placeholder-gray-400 focus:border-blue-500"
+            label="6 Digit Verification Code"
             name="otp"
-            type="text"
+            type="number"
             value={otp}
+            maxLength={6}
+            minLength={6}
             onChange={handleChange}
             placeholder="Enter the code from your email"
             required
@@ -77,7 +81,8 @@ const Verify = () => {
           <Button 
             type="submit" 
             fullWidth 
-            disabled={isLoading}
+            disabled={isLoading || otp.length !== 6}
+            className="bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-semibold py-2 px-4 rounded-md transition-all duration-300 shadow-lg hover:shadow-blue-500/20 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isLoading ? 'Verifying...' : 'Verify Email'}
           </Button>
