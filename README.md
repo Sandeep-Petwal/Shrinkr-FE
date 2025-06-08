@@ -15,7 +15,7 @@
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/Sandeep-Petwal/Shrinkr.git
+   git clone https://github.com/Sandeep-Petwal/Shrinkr-FE.git
    cd Shrinkr
    ```
 
